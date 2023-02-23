@@ -168,7 +168,7 @@ $> ./HAL "+ 1 2"
 
 `develop`:
 - [ ] Crea el fichero `main.c` (archivo principal).
-- [ ] `main.c`: crea `main(int argc, int[] args)` que solo ejecuta `return (0)`.
+- [ ] `main.c`: crea `main(int argc, char **args)` que solo ejecuta `return (0)`.
 - [ ] `main.c`: crea `ft_isdigit(char d)` que indica si un carácter es un dígito.
 - [ ] `main.c`: crea `ft_isoperator(char o)` que indica si un carácter es un operador.
 - [ ] `main.c`: crea `ft_isspace(char s)` que indica si un carácter es un espacio.
