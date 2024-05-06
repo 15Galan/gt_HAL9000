@@ -15,8 +15,6 @@
 
 Esto no es "Guía del autoestopista galáctico".
 
-
-
 # II.   Instrucciones generales
 
 Este proyecto seguirá la misma dinámica que cualquier otro proyecto del *cursus*: reglas del *Makefile*, *Norma\**, etc; no obstante, para este proyecto en particular se añadirá algo nuevo: **un buen uso de Git**.
@@ -27,8 +25,6 @@ Este proyecto seguirá la misma dinámica que cualquier otro proyecto del *cursu
 
 \* La *Norma* va a molestar un poco, así que no la vamos a tener muy en cuenta. Guarda el secreto.
 
-
-
 # III.  Resultados esperados
  
 Este taller no trata sobre *lenguaje C*; así que lo importante no será el resultado final, sino el proceso.
@@ -38,8 +34,6 @@ Se espera que tu repositorio contenga:
 - **Ramas** bien definidas, cuyos cambios reflejen un tema concreto.
 - **Fusiones** que no dejen el repositorio en un estado inconsistente.
 - **Etiquetas** que reflejen un estado concreto del proyecto.
-
-
 
 # IV.   Ejercicio
 
@@ -52,28 +46,32 @@ Este proyecto está estructurado de una forma distinta a la que podrías estar a
 ---
 
 **Tareas y versiones.**  
+
 Este proyecto está dividido en versiones, a su vez divididas en tareas.
+
 - Debes completar correctamente todas las tareas de una versión para desarrollar la siguiente.
 - Debes completar las tareas en el orden en el que se presentan (te resultará más fácil y cómodo).
 - Debes hacer un *commit* al completar una tarea; usa descripciones cuando consideres necesario.
 - Debes etiquetar una versión al terminar su última tarea y antes de empezar la siguiente versión.
 
 **Observaciones.**
+
 - Antes de cada tarea se indica la `rama` en la que debe realizarse; si la rama no existe, créala.
 - Al inicio de cada versión se muestra un ejemplo del funcionamiento de la calculadora en esa versión.
 - Si una versión no cumple todos sus requisitos, deberás corregirlos y etiquetarlos como *PATCH* ([versionado semántico](https://semver.org/lang/es)).
 - Las tareas están indicadas con *casillas* (`- [ ]`).
 
-
 ## Descripción
 
 Crearás un programa que simula una calculadora.
+
 - Recibirá expresiones aritméticas de 2 elementos como un solo argumento de tipo `string`.
 - Mostrará su resultado por la salida estándar.
 - Mostrará un mensaje de ayuda si no recibe ningún argumento.
 - Mostrará un mensaje de error, en función del error, en cualquier otro caso.
 
 Ejemplo de uso:
+
 ```shell
 $> ./HAL
 Usage: HAL "num op num"
@@ -103,12 +101,12 @@ $> ./HAL "1 + 2 + 3"
 Error: bad expression
 ```
 
-
 ## Parte obligatoria
 
 ### Repositorio
 
 Antes de empezar, será necesario un repositorio; además, vamos a configurarlo un poco para que sea más cómodo trabajar con él.
+
 - [ ] Crea un repositorio llamado *gt_HAL9000* en tu carpeta de usuario del sistema.
 - [ ] Modifica la configuración **local** para cambiar los campos `user.name`, `user.email` y `merge.ff`:
     - Usa tu nombre o un mote (cuidado, aparecerá en los *commits*).
@@ -117,11 +115,13 @@ Antes de empezar, será necesario un repositorio; además, vamos a configurarlo 
 - [ ] Modifica tu configuración **global** para crear el alias `git lg`:
     - Crea un alias que muestre la salida de `git log` mostrando **un *commit* por línea** de **todas las ramas** y **decorado** como un **[grafo](https://es.wikipedia.org/wiki/Grafo)**.
 
-> Si tan solo hubiera una forma de consultar documentación en la consola o unas diapositivas muy chulas...
+> [!TIP]
+> Este comando aparece en *ciertas* diapositivas.
 
 ---
 
 Tu configuración local debería quedar de la siguiente forma:
+
 ```
 [user]
     name = <un nombre>
@@ -132,6 +132,7 @@ Tu configuración local debería quedar de la siguiente forma:
 ```
 
 Si el alias está bien configurado, deberías obtener una salida similar a la mostrada a continuación al ejecutar `git lg`; si no muestra nada, probablemente sea porque todavía no has hecho ningún *commit*, y por tanto, no hay nada que mostrar.
+
 ```
 * 1a2b3c4 (HEAD -> master) Errata en el README corregida
 | * 8h9i0j1 (develop) Función f() corregida
@@ -143,8 +144,8 @@ Si el alias está bien configurado, deberías obtener una salida similar a la mo
 * 9q0r1s2 ¡Primer commit!
 ```
 
-> **NOTA:** este alias te permitirá visualizar tu *Árbol de Trabajo*, algo que te resultará muy útil no solo durante el resto del ejercicio, sino durante el resto de tu vida.
-
+> [!NOTE]
+> Este alias te permitirá visualizar tu *Árbol de Trabajo*, algo que te resultará muy útil no solo durante el resto del ejercicio, sino durante el resto de tu vida.
 
 ### Inclusión de recursos
 
@@ -153,21 +154,25 @@ La calculadora aún no hace nada, pero se añaden los recursos necesarios para e
 ---
 
 `master`:
+
 - [ ] Añade un *README* que explique el funcionamiento de la calculadora (por ejemplo, con [la descripción de antes](#descripción)).
 
 `develop`:
+
 - [ ] Crea un *.gitignore* que ignore un ejecutable *HAL* y a las extensiones (`.o`, `.tmp` y `.a`).
 
 
 ### [v0.1.0] HAL
 
 La calculadora:
+
 - El formato de entrada es "num1 op num2", solo como "número, espacio, operador, espacio, número".
 - Si no es el formato descrito, muestra "Error: bad expression".
 - Solo recibe números positivos de un solo dígito.
 - Solo recibe los operadores `+`, `-`, `*` o `/`.
 
-> **NOTA**: La división devuelve 0 si el denominador es 0.
+> [!WARNING]
+> La división devuelve 0 si el denominador es 0.
 
 ```shell
 $> ./HAL "1 + 2"
@@ -193,6 +198,7 @@ $> ./HAL "+ 1 2"
 ---
 
 `develop`:
+
 - [ ] Crea el fichero ***main.c*** (archivo principal).
 - [ ] ***main.c***: crea las siguientes funciones simples:
 	- *int ft_isdigit(char d)* que indica si un carácter es un dígito (`'0123456789'`).
@@ -201,6 +207,7 @@ $> ./HAL "+ 1 2"
 - [ ] ***main.c***: crea *char \*in_read(char \*str)* que lee y devuelve una expresión en un array.
 
 `operations`:
+
 - [ ] Crea el fichero ***operations.c*** (operaciones básicas).
 - [ ] ***operations.c***: crea las siguientes funciones:
     - *int op_add(int a, int b)* que suma dos números.
@@ -211,6 +218,7 @@ $> ./HAL "+ 1 2"
 - [ ] Fusiona los cambios `operations -> develop`.
 
 `develop`:
+
 - [ ] ***main.c***: crea la función *void print_help()* que muestra el mensaje de ayuda.
 - [ ] ***main.c***: utiliza los cambios recibidos en la fusión para que tu calculadora, calcule.
     - Recibe argumentos por consola; si no hay argumentos, muestra la ayuda.
@@ -218,10 +226,10 @@ $> ./HAL "+ 1 2"
     - Calcula y muestra el resultado con las funciones de ***operations.h***, o el error.
 - [ ] Crea un ***Makefile*** que compile tu programa y cree un ejecutable llamado *HAL*.
 
-
 ### [v1.0.0] HAL 9000
 
 La calculadora:
+
 - El formato de entrada es "num1 op num2", con cualquier cantidad de espacios entre cada elemento.
 
 ```shell
@@ -250,11 +258,13 @@ Por otra parte, también sería ideal que simplemente pudieras trabajar con cada
 
 Y ya puestos, acabas de repetir funciones simples como *ft_isdigit()* que ya hiciste en *Libft*, sería más conveniente usar esa librería y ahorrar futuro trabajo duplicado.
 
+> [!NOTE]
 > Si aún no cuentas con una *Libft* operativa, puedes usar [la mía](https://github.com/15Galan/Libft/releases/tag/v1.2.1).
 
 ---
 
 `dependencies`:
+
 - [ ] Añade la librería ***Libft*** al repositorio (recuerda borrar su carpeta *.git* o sufrirás las consecuencias).
 - [ ] ***main.c***: incluye la librería ***Libft***.
 	- Limpia *#include*s atendiendo a *libft.h*.
@@ -268,18 +278,17 @@ Ahora, el operador se almacena como `char **` en lugar de `char *`.
 - [ ] Fusiona los cambios `dependencies -> develop`.
 
 `develop`:
+
 - [ ] Fusiona los cambios `develop -> master`.
-
-
 
 ## Parte bonus
 
 Ahora que ya has desarrollado tu primera *release* de la calculadora, es hora de añadirle nuevas funciones y mejorar su rendimiento realizando cambios de categoría *MAJOR*.
 
-
 ### [v2.0.0] HAL +9000
 
 La calculadora:
+
 - El código necesario para calcular operaciones es más óptimo.
 
 ```shell
@@ -306,12 +315,12 @@ Como habrás podido observar, el código para calcular operaciones pedía a grit
 Precisamente por esto la versión pasa de `1.0.0` a `2.0.0`, ya que en la primera, se calculaba con 4 funciones distintas y ahora, se sustituyen por una sola; el funcionamiento es distinto y el procesamiento de los datos también.
 
 `develop`:
+
 - [ ] ***main.c***: crea la función *void operate(int a, char \*op, int)*.
 - [ ] Elimina los ficheros **operations.\**** y su *#include*.
 - [ ] Fusiona los cambios `develop -> master`.
 
-
-### [v2.1.0] Become sentient
+### [v2.1.0] *Become sentient*
 
 La calculadora ahora añade colores y *consciencia propia*.
 
@@ -334,11 +343,13 @@ $> ./HAL " 42   "
 
 ---
 
-> *Up2U!* Lo siento, no hay *recursos* para esto, ¡es el final del bonus!
+> [!CAUTION]
+> Lo siento, no hay *recursos* para esto, es el final del bonus. *Up2U!* 
 
 Para estas últimas tareas, usa tu cabeza y la experiencia de todo lo que has estado haciendo hasta ahora: desarrolla estos cambios en una rama `bonus` que parte del último *commit* de `develop`, pero siéntete libre de implementar lo pedido como mejor te parezca.
 
 `bonus`:
+
 - [ ] Implementa que los mensajes de la calculadora se muestren en los colores indicados.
 
 | Mensaje                  | Color    |
@@ -361,8 +372,6 @@ Los colores vienen como código de caracteres: por ejemplo, digamos que rojo es 
 
 Comprobando más opciones de entrada distintas, esto debería ser bastante fácil, ¿no?
 
-
-
 # Evaluación
 
 Me temo que, *legalmente hablando*, no hay forma de evaluar el proyecto, así que no hay evaluación.
@@ -376,6 +385,7 @@ $> git checkout <versión>
 ```
 
 Tu resultado final debería ser algo parecido a este árbol de trabajo:
+
 ```mermaid
 %%{
     init: {
@@ -439,4 +449,3 @@ gitGraph
 ---
 
 - Proyecto creado por [**@15Galan**](https://srgalan.vercel.app).
-
